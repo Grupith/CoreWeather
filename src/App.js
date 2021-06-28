@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import Welcome from './components/Welcome';
 import Dashboard from './components/Dashboard';
-import {getWeatherData} from './components/weatherapi'
+import {getWeatherData} from './components/weatherapi';
+
 
 function App() {
 
@@ -11,13 +12,11 @@ function App() {
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState('');
 
-  const getData = async () => {
-    try {
+  const fetchWeather = async (e) => {
+    if(e.key === 'Enter') {
       const data = await getWeatherData(location);
-      setWeatherData(data.main.temp);
-      console.log(data);
-    } catch(error) {
-      console.log(error);
+      setWeatherData(data);
+      setLocation('');
     }
   }
   
@@ -31,9 +30,15 @@ function App() {
         name={name}
         setName={setName}
         location={location}
-        setLocation={setLocation} /> }
+        setLocation={setLocation}
+        onKeyPress={fetchWeather} /> }
 
-      {submitted && <Dashboard name={name} location={location} weatherData={weatherData}/>}
+      {submitted && 
+        <Dashboard 
+        name={name} 
+        location={location} 
+        weatherData={weatherData}/>
+        }
 
     </div>
   );

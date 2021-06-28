@@ -1,16 +1,18 @@
 import React from 'react';
 import { getWeatherData } from './weatherapi';
 
-const Welcome = ({submitted, setSubmit, name, setName, location, setLocation}) => {
+const Welcome = ({submitted, setSubmit, name, setName, location, setLocation, setWeatherData}) => {
 
     return (
         <div className='card'>
             <h1 className='title'>Welcome to <span>CoreWeather</span></h1>
             <h2 className='subTitle'>Give us your name and location</h2>
-                <form onSubmit={(e) => {
+                <form onSubmit={ async (e) => {
                     e.preventDefault();
                     setSubmit(true);
-                    console.log('form was submitted')
+                        const data = await getWeatherData(location);
+                        console.log('form was submitted', data);
+
                 }}>
                 <div className='inputs'>
                     <input 
@@ -26,7 +28,6 @@ const Welcome = ({submitted, setSubmit, name, setName, location, setLocation}) =
                         value={location}
                         onChange={(e) => {
                             setLocation(e.target.value)
-                            console.log('The current location when subbmitted is', location);
                         }}
                         ></input>
                 </div>
