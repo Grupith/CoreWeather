@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dashboard = ({name, location}) => {
+const Dashboard = ({name, location, weather}) => {
     return (
         <div className='dashboardCard'>
            <div className='dashboardName'>
@@ -8,6 +8,7 @@ const Dashboard = ({name, location}) => {
                 <span className='name'>{name}</span>
            </div>
            <p className='todaysDate'>Todays Date is <span className='date'>6-22-2021</span> </p>
+           <span className='temp'>{weather}</span>
            <h3 className='location'>Your based in <span className='city'>{location}</span></h3>
         </div>
     )

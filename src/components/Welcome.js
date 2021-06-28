@@ -1,4 +1,5 @@
 import React from 'react';
+import { getWeatherData } from './weatherapi';
 
 const Welcome = ({submitted, setSubmit, name, setName, location, setLocation}) => {
 
@@ -22,7 +23,11 @@ const Welcome = ({submitted, setSubmit, name, setName, location, setLocation}) =
                         type='text' 
                         name='Location' 
                         placeholder='Location'
-                        onChange={(e) => setLocation(e.target.value)}
+                        value={location}
+                        onChange={(e) => {
+                            setLocation(e.target.value)
+                            console.log('The current location when subbmitted is', location);
+                        }}
                         ></input>
                 </div>
                     <button>Submit</button>
