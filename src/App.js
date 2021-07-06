@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import Welcome from './components/Welcome';
 import Dashboard from './components/Dashboard';
-import {getWeatherData} from './components/weatherapi';
-
 
 function App() {
 
@@ -12,14 +10,6 @@ function App() {
   const [location, setLocation] = useState('');
   const [weatherData, setWeatherData] = useState('');
 
-  const fetchWeather = async (e) => {
-    if(e.key === 'Enter') {
-      const data = await getWeatherData(location);
-      setWeatherData(data);
-      setLocation('');
-    }
-  }
-  
   return (
     <div className="App">
        
@@ -30,8 +20,7 @@ function App() {
         name={name}
         setName={setName}
         location={location}
-        setLocation={setLocation}
-        onKeyPress={fetchWeather} /> }
+        setLocation={setLocation} /> }
 
       {submitted && 
         <Dashboard 

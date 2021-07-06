@@ -10,9 +10,10 @@ const Welcome = ({submitted, setSubmit, name, setName, location, setLocation, se
                 <form onSubmit={ async (e) => {
                     e.preventDefault();
                     setSubmit(true);
-                        const data = await getWeatherData(location);
-                        console.log('form was submitted', data);
-
+                    const data = await getWeatherData(location);
+                    console.log('form was submitted', data);
+                    setWeatherData(data);
+                    setLocation('');
                 }}>
                 <div className='inputs'>
                     <input 
