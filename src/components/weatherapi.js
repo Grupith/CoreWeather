@@ -6,7 +6,6 @@ const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
 export const getWeatherData = async (location) => {
     try {
         const getData = await axios.get(baseURL + `&q=${location}&appid=${apiKey}&units=imperial`);
-        console.log(getData.data.main.temp);
         return getData;
         
     } catch(error) {

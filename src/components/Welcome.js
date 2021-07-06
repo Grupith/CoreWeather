@@ -11,7 +11,9 @@ const Welcome = ({submitted, setSubmit, name, setName, location, setLocation, se
                     e.preventDefault();
                     setSubmit(true);
                         const data = await getWeatherData(location);
-                        console.log('form was submitted', data);
+                        console.log('Form was submitted, Here is the data...', data);
+                        setWeatherData(Math.round(data.data.main.temp) + '°');
+                        // setLocation('');
 
                 }}>
                 <div className='inputs'>
